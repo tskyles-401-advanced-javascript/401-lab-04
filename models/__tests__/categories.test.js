@@ -32,18 +32,16 @@ describe('Categories Model', () => {
       });
   });
 
-  xit('can update() a category', () => {
+  it('can update() a category', () => {
     let obj = { name: 'Test Category' };
     let updatedObj = { name: 'Updated Category' };
     return categories.create(obj)
       .then(record => {
-        console.log(record);
-        return categories.update(record.id, updatedObj.name)
+        return categories.update(record.id, updatedObj)
           .then(category => {
-            console.log(category.id);
             Object.keys(obj).forEach(key => {
-              expect(category[0][key]).toEqual(updatedObj[key]);
-            });
+              expect(category[key]).not.toEqual(obj[key]);
+            });          
           });
       });
   });
