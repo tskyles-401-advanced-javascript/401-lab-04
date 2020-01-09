@@ -30,6 +30,15 @@ class Model {
     return Promise.resolve();
   }
 
+  sanatize(entry) {
+    if(validator.isValid(entry.schema, entry)){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }
 
 module.exports = Model;

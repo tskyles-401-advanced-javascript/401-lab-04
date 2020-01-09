@@ -26,6 +26,7 @@
   "homepage": "https://github.com/tskyles-401-advanced-javascript/401-lab-04#readme",
   "dependencies": {
     "eslint": "^6.8.0",
+    "faker": "^4.1.0",
     "jest": "^24.9.0"
   }
 }
