@@ -1,6 +1,7 @@
 'use strict';
 
 const uuid = require('uuid/v4');
+const validator = require('../validator/lib/validator');
 
 class Model {
 
