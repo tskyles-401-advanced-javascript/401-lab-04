@@ -46,7 +46,7 @@ describe('Categories Model', () => {
       });
   });
 
-  it('can delete() a catelgory', () => {
+  it('can delete() a category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
       .then(record => {
@@ -54,6 +54,20 @@ describe('Categories Model', () => {
           .then(category => {
             expect(category).toBeUndefined();
           });
+      });
+  });
+
+  it('can sanitize() a file before inputting', () => {
+    let schema = {
+      fields: {
+        id: { required: true },
+        name: { required: true },
+      },
+    };
+    let obj = { name: 'Test Category' };
+    return categories.create(obj)
+      .then(record => {
+        console.log(categories.sanatize(record));
       });
   });
 
