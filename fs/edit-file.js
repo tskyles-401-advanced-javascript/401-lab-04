@@ -21,3 +21,5 @@ const writerWithPromise = (file, text) => {
     .catch(error => { throw error; });
 };
 
+module.exports = { readerWithPromise, writerWithPromise };
+
