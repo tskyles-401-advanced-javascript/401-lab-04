@@ -2,6 +2,8 @@
 
 const uuid = require('uuid/v4');
 const validator = require('../validator/lib/validator');
+const editFile = require('../../fs/edit-file');
+
 
 class Model {
 
