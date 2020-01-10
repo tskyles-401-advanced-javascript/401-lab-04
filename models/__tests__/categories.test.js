@@ -46,6 +46,19 @@ describe('Categories Model', () => {
       });
   });
 
+  xit('does not update() if invalid', () => {
+    let obj = { name: 'Test Category' };
+    let updatedObj = { name: 123 };
+    return categories.create(obj)
+      .then(record => {
+        return categories.update(record.id, updatedObj)
+          .then(category => {
+            console.log(record);
+          });          
+      });
+  });
+
+
   it('can delete() a category', () => {
     let obj = { name: 'Test Category' };
     return categories.create(obj)
@@ -56,19 +69,4 @@ describe('Categories Model', () => {
           });
       });
   });
-
-  it('can sanitize() a file before inputting', () => {
-    let schema = {
-      fields: {
-        id: { required: true },
-        name: { required: true },
-      },
-    };
-    let obj = { name: 'Test Category' };
-    return categories.create(obj)
-      .then(record => {
-        console.log(categories.sanatize(record));
-      });
-  });
-
 });

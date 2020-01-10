@@ -31,7 +31,7 @@ class Model {
   }
 
   sanatize(entry) {
-    if(validator.isValid(entry.schema, entry)){
+    if(validator.isValid(this.schema, entry)){
       return true;
     }
     else {
