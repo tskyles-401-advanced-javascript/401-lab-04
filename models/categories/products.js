@@ -18,6 +18,7 @@ class Products extends DataModel {
 }
 
 const laptops = new Products();
+const bags = new Products();
 
 laptops.create({
   category_id: 'laptops',
@@ -25,5 +26,14 @@ laptops.create({
   weight: 4,
   quantity_in_stock: 50,
 });
+
+bags.create({
+  category_id: 'bags',
+  price: 30,
+  weight: 2,
+  quantity_in_stock: 100,
+});
+
+laptops.update('laptops', {price: 300});
 
 module.exports = Products;

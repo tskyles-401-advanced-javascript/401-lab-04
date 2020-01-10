@@ -16,8 +16,8 @@ class Validator {
   constructor(){}
   isValid(schema, input){
     let valid = true;
-    for(let fieldName in schema){
-      let field = schema[fieldName];
+    for(let fieldName in schema.fields){
+      let field = schema.fields[fieldName];
       // am i required and set?
       let required = field.required
         ?this.isTruthy(input[fieldName])

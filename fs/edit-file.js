@@ -25,7 +25,6 @@ const readerWithPromise = (file) => {
  * @returns
  */
 const writerWithPromise = (text) => {
-  console.log(file);
   return writeFilePromise(file, JSON.stringify(text))
     .then(success => success)
     .catch(error => { throw error; });
