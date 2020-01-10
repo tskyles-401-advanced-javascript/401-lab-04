@@ -19,7 +19,6 @@ class Model {
  *
  *
  * @param {*} id
- * @returns
  * @memberof Model
  */
   get(id) {
@@ -30,7 +29,6 @@ class Model {
  *
  *
  * @param {*} record
- * @returns
  * @memberof Model
  */
   create(record) {
@@ -43,7 +41,6 @@ class Model {
  *
  * @param {*} id
  * @param {*} record
- * @returns
  * @memberof Model
  */
   update(id, record) {
@@ -54,7 +51,6 @@ class Model {
  *
  *
  * @param {*} id
- * @returns
  * @memberof Model
  */
   delete(id) {
