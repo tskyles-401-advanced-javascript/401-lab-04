@@ -6,7 +6,7 @@ const util = require('util');
 const file = `__dirname/../data/products.js`;
 
 const readFilePromise = util.promisify(fs.readFile);
-// const writeFilePromise = util.promisify(fs.writeFile);
+const writeFilePromise = util.promisify(fs.writeFile);
 
 const readerWithPromise = (file) => {
   return readFilePromise(file)
@@ -16,7 +16,7 @@ const readerWithPromise = (file) => {
 
 const writerWithPromise = (file, text) => {
   let contents = Buffer.from(typeof text === 'object'? JSON.stringify(text) : text);
-  return write(file, contents)
+  return writeFilePromise(file, contents)
     .then(success => success)
     .catch(error => { throw error; });
 };

@@ -3,22 +3,23 @@
 const uuid = require('uuid/v4');
 const validator = require('../validator/lib/validator');
 const editFile = require('../../fs/edit-file');
+const file = `__dirname/../data/products.js`;
 
 
 class Model {
 
   constructor() {
-    this.database = [];
+    this.database = `__dirname/../data/products.js`;
   }
 
   get(id) {
-    let response = id ? this.database.filter((record) => record.id === id) : this.database;
+    let response = id ? editFile.readerWithPromis(this.database).filter((record) => record.id === id) : this.database;
     return Promise.resolve(response);
   }
 
   create(record) {
     record.id = uuid();
-    this.database.push(record);
+    editFile.writerWithPromise(this.database, record);
     return Promise.resolve(record);
   }
 
