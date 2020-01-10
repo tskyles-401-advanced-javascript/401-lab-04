@@ -24,12 +24,12 @@ class Model {
   }
 
   update(id, record) {
-    this.database = editFile.readerWithPromise(this.database).map((item) => (item.id === id) ? edit.writerWithPromise(record) : item);
+    this.database = editFile.readerWithPromise(this.database).map((item) => (item.id === id) ? editFile.writerWithPromise(record) : item);
     return Promise.resolve(record);
   }
 
   delete(id) {
-    this.database = this.database.filter((record) => record.id !== id);
+    this.database = editFile.readerWithPromise(this.database).filter((record) => record.id !== id);
     return Promise.resolve();
   }
 
