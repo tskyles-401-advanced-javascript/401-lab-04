@@ -48,10 +48,10 @@ describe('Categories Model', () => {
 
   xit('does not update() if invalid', () => {
     let obj = { name: 'Test Category' };
-    let updatedObj = { name: 123 };
+    let invalidObj = { name: 123 };
     return categories.create(obj)
       .then(record => {
-        return categories.update(record.id, updatedObj)
+        return categories.update(record.id, invalidObj)
           .then(category => {
             console.log(record);
           });          
