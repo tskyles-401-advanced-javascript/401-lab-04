@@ -2,9 +2,8 @@
 
 const uuid = require('uuid/v4');
 const validator = require('../validator/lib/validator');
+const editFile = require('../fs/edit-file');
 /**
- *
- *
  * @class Model
  */
 class Model {
@@ -16,8 +15,6 @@ class Model {
     this.database = [];
   }
   /**
- *
- *
  * @param {*} id
  * @memberof Model
  */
@@ -34,6 +31,7 @@ class Model {
   create(record) {
     record.id = uuid();
     this.database.push(record);
+    editFile.writerWithPromise(record);
     return Promise.resolve(record);
   }
   /**
@@ -44,12 +42,13 @@ class Model {
  * @memberof Model
  */
   update(id, record) {
-    this.database = this.database.map((item) => (item.id === id) ? record : item);
+    const toBeValidated = this.database.map((item) => (item.id === id) ? record : item);
+    if(validator.isValid(this.schema, toBeValidated)){
+      editFile.writerWithPromise(record);
+    }
     return Promise.resolve(record);
   }
   /**
- *
- *
  * @param {*} id
  * @memberof Model
  */
@@ -59,7 +58,5 @@ class Model {
   }
 
 }
-/**
- *  @module Model - exports Model
- */
+
 module.exports = Model;
