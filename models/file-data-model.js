@@ -13,7 +13,7 @@ class Model {
   }
 
   get(id) {
-    let response = id ? editFile.readerWithPromis(this.database).filter((record) => record.id === id) : this.database;
+    let response = id ? editFile.readerWithPromise(this.database).filter((record) => record.id === id) : this.database;
     return Promise.resolve(response);
   }
 
@@ -24,22 +24,13 @@ class Model {
   }
 
   update(id, record) {
-    this.database = this.database.map((item) => (item.id === id) ? record : item);
+    this.database = editFile.readerWithPromise(this.database).map((item) => (item.id === id) ? edit.writerWithPromise(record) : item);
     return Promise.resolve(record);
   }
 
   delete(id) {
     this.database = this.database.filter((record) => record.id !== id);
     return Promise.resolve();
-  }
-
-  sanatize(entry) {
-    if(validator.isValid(this.schema, entry)){
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 
 }
